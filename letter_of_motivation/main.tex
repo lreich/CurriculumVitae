@@ -1,0 +1,90 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[left=2.5cm,right=2.5cm,top=2.0cm,bottom=2.0cm]{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fontspec}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{changepage}
+\usepackage[UKenglish]{isodate}
+\cleanlookdateon
+
+% Font setup for LuaLaTeX
+\setmainfont{Latin Modern Sans}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Color definitions
+\definecolor{gradleft}{HTML}{18E3A8}
+\definecolor{gradright}{HTML}{11D9E6}
+\definecolor{theme_color}{HTML}{3A5B8C}
+\definecolor{header_color}{HTML}{333333}
+\definecolor{gray}{HTML}{777777}
+
+\pagestyle{empty}
+
+% Header Command
+\newcommand{\makeletterheader}[4]{
+
+    \noindent
+    \begin{minipage}[t]{0.55\textwidth}
+        {\color{gray} Cologne, \today}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.38\textwidth}
+        \raggedleft
+        {\Large\bfseries\color{header_color} #1}\\[3ex]
+        % \color{theme_color}\rule{\linewidth}{1.5pt}\\[1.5ex]
+
+        {\small\color{header_color}
+        \href{mailto:#2}{#2}\\
+        #3}
+    \end{minipage}
+
+    \vspace{3em}
+
+    % Recipient / Subject
+    {\Large\bfseries\color{header_color} #4}\\[0.8ex]
+    % {\color{theme_color}\rule{\textwidth}{1.5pt}}
+    \begin{tikzpicture}
+    \shade[left color=gradleft,
+           right color=gradright]
+        (0,0) rectangle (\textwidth,1.5pt);
+    \end{tikzpicture}
+
+    \vspace{3em}
+}
+
+\begin{document}
+
+\def\spacing{1em}
+
+\thispagestyle{empty}
+
+\makeletterheader
+{[Full name]}
+{mail@example.com}
+{+49 123 456789}
+{Title}
+
+\begin{adjustwidth}{1.5cm}{0cm}
+
+Dear Sir or Madam,
+
+\vspace{\spacing}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+\vspace{\spacing}
+
+Kind regards,
+
+\vspace{\spacing}
+
+{\bfseries [Full name]}
+
+\end{adjustwidth}
+
+\end{document}
